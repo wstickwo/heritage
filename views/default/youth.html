@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell">
+
+	<h3>Welcome to the HBC Youth site</h3>
+
+    {{for youth in youths:}}
+        <section>
+            <div>
+                {{if youth.image:}}
+                    <img src="{{=URL('download',args=youth.image)}}" alt="{{=youth.id}}">
+                    <script>
+                         $('img[alt="{{=youth.id}}"]').load(function() {
+                            var height = $(this).height();
+                            $(this).parent().css('min-height',height + 5 + 'px');
+                        });
+                    </script>
+                {{pass}}
+                <h3>{{=youth.title}}</h3>
+                {{=MARKMIN(youth.paragraph)}}
+            </div>
+        </section>
+    {{pass}}
+
+</article>

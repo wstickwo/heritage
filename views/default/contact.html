@@ -1,0 +1,13 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell noIndent">
+
+	<h3>Contact Us:</h3>
+
+    {{for contact in contacts:}}
+        <section>
+            {{=MARKMIN(contact.paragraph)}}
+        </section>
+    {{pass}}
+
+</article>

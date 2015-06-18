@@ -1,0 +1,20 @@
+<!--<div class="col-md-6">
+	<img id="logo" src="{{=URL('static','images/HBC_logo.png')}}" alt="HBC logo">
+</div>
+
+<div class="col-md-6 text-right">-->
+<div>
+    {{if request.controller == 'manage':}}
+		<p>
+            Welcome {{=auth.user.first_name}}<br>
+            Edit Mode.
+		</p>
+    {{else:}}
+		<p>
+            Developing followers of Jesus Christ<br>
+            who will live the great commission.<br>
+            (Matthew 28:19-20)
+		</p>
+    {{pass}}
+<img id="logo" src="{{=URL('static','images/HBC_logo.png')}}" alt="HBC logo">
+</div>

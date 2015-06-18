@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell bubble">
+
+	<h3>Meet our Staff:</h3>
+
+	{{for staff in staff:}}
+        <section>
+            <p>
+                <img src="{{=URL('download',args=staff.image)}}" alt="cross pic">
+                {{=staff.job_post.title()}}<br>
+                {{=staff.name.title()}}
+            </p>
+        </section>
+    {{pass}}
+
+</article>

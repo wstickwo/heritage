@@ -1,0 +1,48 @@
+{{extend 'layout.html'}}
+
+<article class='tableCell'>
+    <h2>{{=T("Available Databases")}}</h2>
+<!--
+    <table class='table'>
+        {{#for db in sorted(databases):}}
+            {{#for table in databases[db].tables:}}
+                {{#qry='%s.%s.id>0'%(db,table)}}
+                {{#tbl=databases[db][table]}}
+                {{#if hasattr(tbl,'_primarykey'):}}
+                    {{#if tbl._primarykey:}}
+                        {{#firstkey=tbl[tbl._primarykey[0]]}}
+                        {{#if firstkey.type in ['string','text']:}}
+                            {{#qry='%s.%s.%s!=""'%(db,table,firstkey.name)}}
+                        {{#else:}}
+                            {{#qry='%s.%s.%s>0'%(db,table,firstkey.name)}}
+                        {{#pass}}
+                    {{#else:}}
+                        {{#qry=''}}
+                    {{#pass}}
+                {{#pass}}
+            {{for table in tables:}}
+                <tr>
+                    {{#if table.find('auth',0,4):}}
+                        <th>
+                            {{#=A("%s" % (table),_href=URL(table,args=[db],vars=dict(query=qry)))}}
+                            {{=A(table,_href=URL(table))}}
+                        </th>
+                    {{#pass}}
+                </tr>
+            {{pass}}
+        {{#pass}}
+    </table>
+-->
+
+    <table class='table'>
+        {{for table in tables:}}
+                <tr>
+                    {{#if table.find('auth',0,4):}}
+                        <th>
+                            {{=A('edit',_href=URL('edit',args=table))}}
+                        </th>
+                    {{#pass}}
+                </tr>
+            {{pass}}
+    </table>
+</article>

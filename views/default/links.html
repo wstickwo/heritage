@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell logo">
+
+    {{for category in categories:}}
+        <h3 class="left">{{=category.category}}:</h3>
+        {{for link in links:}}
+            {{if link.category == category.id:}}
+                <p>
+                    <a href='{{=link.url}}' target='blank'>
+                        {{if link.pic:}}
+                            <img src="{{=URL('download',args=link.pic)}}"><br>
+                        {{pass}}
+                        {{=link.title.title()}}
+                    </a>
+                </p>
+            {{pass}}
+        {{pass}}
+    {{pass}}
+
+</article>

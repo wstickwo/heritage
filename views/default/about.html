@@ -1,0 +1,23 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell">
+
+	<h3>About Us:</h3>
+
+    {{for item in abouts:}}
+        <section>
+            {{if item.image:}}
+                <img src="{{=URL('download',args=item.image)}}" alt="{{=item.id}}">
+                <script>
+                    $('img[alt="{{=item.id}}"]').load(function() {
+                        var height = $(this).height();
+                        $(this).parent().css('min-height',height + 5 + 'px');
+                    });
+                </script>
+            {{pass}}
+            <h3>{{=item.title}}</h3>
+            {{=MARKMIN(item.paragraph)}}
+        </section>
+    {{pass}}
+
+</article>

@@ -1,0 +1,16 @@
+<nav>
+    <div>
+        {{if response.menu:}}
+            {{=MENU(response.menu,_class='sf-menu sf-vertical')}}
+        {{pass}}
+    </div>
+</nav>
+
+<section>
+    {{for menu in side:}}
+        <div>
+            <h3>{{=MARKMIN(menu.title)}}</h3>
+            {{=MARKMIN(menu.paragraph)}}
+        </div>
+    {{pass}}
+</section>

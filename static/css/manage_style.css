@@ -1,0 +1,226 @@
+@font-face {
+	font-family: "Courgette";
+	src:	url("../fonts/Courgette-Regular.ttf");
+}
+
+body {
+	font-family:				sans-serif;
+	font-size:					1.1em;
+	background-color:	#cccc00;
+}
+
+/* *****************************************
+ configure the header area */
+header {
+	font-family:						"Courgette", cursive;
+	font-size:							1em;
+	font-weight:					bold;
+	text-align:						right;
+	color:								#000;
+
+	background-color:			#ffffff;
+}
+
+/* *****************************************
+ These classes configure the pages to a table display 
+.table {
+	display:				table;
+	border-collapse:	collapse;
+	margin:				auto;
+}
+
+.tableRow {
+	display:	table-row;
+}
+
+.tableCell {
+
+	display:	table-cell;
+}
+
+/* *****************************************
+This code configures the left side of the pages, including
+the menu and church info underneath 
+aside {
+	width:					180px;
+	font-size:				0.9em;
+	background-color:	#ffffff;
+}
+
+/* menu styling */
+nav ul {
+	margin-left:		-30px;
+	margin-right:	 	6px;
+	margin-top:		-10px;
+}
+
+nav ul li {
+	list-style-type:	none;
+}
+
+nav ul li a {
+	display:					block;
+	padding:				5px;
+
+	color:					#000000;
+	font-weight:			bold;
+	text-decoration:		none;
+	text-align:				center;
+
+	background-color:	#e3e9ff;
+}
+
+nav ul li a:hover {
+	color:					#ffffff;
+	background-color:	#9999ff;
+}
+
+/* *****************************************
+ styling for the box under the menu 
+aside section {
+	font-size:				0.8em;
+	text-align:				center;
+
+	margin:					5px;
+
+	border:					solid 3px #000033;
+	border-radius:		25px;
+
+	color:					#001d8d;
+	background-color:	#e2e9ff;
+}
+
+aside section h3 {
+	padding:	8px;
+	margin:		0px;
+}
+
+aside section p {
+	padding:	0px 13px 10px 13px;
+	margin:		0px;
+}
+
+address {
+	font-style:			normal;
+	padding:			5px;
+	border-bottom:	solid 3px #000033;
+}
+
+#asideTableCell {
+	display:			table-cell;
+	border-right:	solid 3px #000033;
+}
+
+/* *****************************************
+ styling for the main portion of the web page */
+
+article {
+    display: block;
+    width:					820px;
+	padding:				0px 5px 10px 5px;
+	background-color:	#cccccc;
+}
+
+article h2 {
+	margin:		15px 0px;
+    text-align: center;
+}
+
+article section {
+    margin-top:		-13px; // to overlap the sections
+	text-align:			justify;
+	padding:			3px 8px;
+	border-radius:	8px;
+}
+
+article section h4 {
+    margin: 15px 0px;
+}
+
+section img {
+    max-width: 200px;
+    max-height: 180px;
+}
+
+article p {
+	text-indent:	2em;
+}
+
+article p span {
+	color:		#011f8f;
+	font-style:	italic;
+}
+
+    article a {
+    padding: 5px 10px;
+    color: #0000FF;
+}
+
+article table tr td, article table tr td {
+    padding: 5px 15px;
+    text-align: center;
+}
+
+article table tr {
+    border-top: solid 2px #000000;
+}
+
+article table tr th a {
+	color:				#000000;
+	font-size: 1.75em;
+    display: block;
+    padding: 5px 20px;
+}
+
+article table tr th a:last {
+    border-bottom: black 2px solid;
+}
+
+article a:hover {
+    color: #4444ff;
+	background-color:	#eeee33;
+}
+
+
+article table tr:nth-child(odd) {
+	background-color:	#cccccc;
+}
+
+article table tr:nth-child(even) {
+	background-color:	#cccc99;
+}
+
+/* *****************************************
+ styling for the footer portion of the web page */
+footer {
+	font-size:							1em;
+	text-align:							left;
+
+	padding:							20px 10px;
+	margin-bottom:					20px;
+
+}
+
+footer table {
+    margin: auto;
+    border: solid 2px #000000;
+}
+
+footer table tr th {
+    text-align: center;
+}
+
+footer table tr td {
+    padding: 5px;
+    margin: 0px;
+    border-top: solid 2px #000000;
+    background-color: #666600;
+}
+
+#rights {
+	font-size:	0.6em;
+}
+
+#delete {
+    text-decoration: underline;
+}

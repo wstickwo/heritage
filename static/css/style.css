@@ -1,0 +1,352 @@
+/* {
+	border: solid 1px red;
+}*/
+
+@font-face {
+	font-family: "Courgette";
+	src:	url("../fonts/Courgette-Regular.ttf");
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 1.1em;
+	background-color: #99ccff;
+	min-width:				1000px;
+	max-width: 1000px;
+	margin: auto;
+}
+
+/* *****************************************
+ configure the header area */
+.header {
+	font-family: "Courgette", cursive;
+	font-size: 1em;
+	font-weight: 600;
+	text-align:						right;
+	color: #011f8f;
+
+	background-color:			#ffffff;
+	height:								100px;
+	padding:							5px 20px 0px 0px;
+	margin-top:						10px;
+
+	border-bottom:				solid 3px #000033;
+	border-top-left-radius:	20px;
+	border-top-right-radius:	20px;
+}
+
+/* *****************************************
+ These classes configure the pages to a table display */
+.table {
+	display:				table;
+	border-collapse:	collapse;
+	margin:				auto;
+}
+
+.tableRow {
+	display:	table-row;
+}
+
+.tableCell {
+	display:	table-cell;
+}
+
+/* *****************************************
+This code configures the left side of the pages, including
+the menu and church info underneath */
+aside {
+	width:					180px;
+	font-size:				0.9em;
+	background-color:	#ffffff;
+}
+
+/* menu styling */
+aside nav {
+    margin-bottom: 10px;
+}
+
+aside nav ul {
+	margin-left:		-30px;
+	margin-right:	 	6px;
+	margin-top:		-10px;
+}
+
+aside nav ul li {
+	list-style-type:	none;
+}
+
+aside nav ul li a {
+	display:					block;
+	padding:				5px;
+
+	color:					#000000;
+	font-weight:			bold;
+	text-decoration:		none;
+	text-align:				center;
+
+	background-color:	#e3e9ff;
+}
+
+aside nav ul li a:hover {
+	color:					#ffffff;
+	background-color:	#9999ff;
+}
+
+
+/* *****************************************
+ styling for the box under the menu */
+aside section {
+	font-size:				0.8em;
+	text-align:				center;
+
+	margin:					0px;
+
+	border-top:				solid 3px #000033;
+	/*border-radius:		25px;*/
+
+	color:					#001d8d;
+	background-color:	#e2e9ff;
+	/*background-color:	#011f8f;*/
+}
+
+aside section div {
+	padding:	0px 8px 5px 8px;
+	margin:		0px;
+    border-bottom:				solid 3px #000033;
+}
+
+aside section div h3 p {
+	padding:	0px;
+	margin:		0px;
+}
+
+#asideTableCell {
+	display:			table-cell;
+	border-right:	solid 3px #000033;
+}
+
+/* *****************************************
+ styling for the main portion of the web page */
+
+article {
+    width:					800px;
+	background-color:	#ffffff;
+	padding:				0px 10px 10px;
+}
+
+article h3 {
+	margin:		15px 0px;
+}
+
+article section {
+    margin-top:		-13px; // to overlap the sections
+	text-align:			justify;
+	padding:			3px 8px;
+	border-radius:	8px;
+}
+
+article section h4 {
+    margin: 15px 0px;
+}
+
+article section:nth-child(odd) {
+	margin-left:			150px;
+	background-color:	#9999ff /*#e3e9ff;*/
+	/*background-color:	rgba(102,102,225,0.5);*/
+}
+
+article section:nth-child(even) {
+	margin-right:			150px;
+	background-color:	#ccccff;
+	/*background-color:	rgba(207,215,255,0.5);*/
+}
+
+section img {
+    max-width: 200px;
+    max-height: 180px;
+}
+
+section:nth-child(odd) img {
+	position:		relative;
+	float:				right;
+	padding:		5px 15px 5px; /*top, left/right, bottom*/
+}
+
+section:nth-child(even) img {
+	position:			relative;
+	float:					left;
+	padding:			5px 15px 5px;
+}
+
+article p {
+	text-indent:	2em;
+}
+
+article p span {
+	color:		#011f8f;
+	font-style:	italic;
+}
+
+article a, footer a {
+	color:				#011f8f;
+	text-decoration:	none;
+}
+
+article a:hover, footer a:hover {
+	background-color:	#ccccff;
+}
+
+article section table {
+    margin: auto;
+}
+
+/* *****************************************
+ styling for the footer portion of the web page */
+footer {
+	font-size:							0.9em;
+	text-align:							center;
+
+	padding:							10px 30px;
+	margin-bottom:					20px;
+
+	border-top:						solid 3px #000033;
+	border-bottom-left-radius:	20px;
+	border-bottom-right-radius:	20px;
+	background-color:				#ffffff;
+}
+
+footer h6 {
+	font-size:			1.1em;
+	font-weight:		bold;
+	text-decoration:	underline;
+	margin:				0px 0px 10px 0px;
+}
+
+#rights {
+	font-size:	0.6em;
+    text-align:  center;
+}
+
+/* *****************************************
+ styling for the bible gateway at bottom of page */
+#gateway {
+	width:					700px;
+	text-align:				center;
+	margin:					auto;
+
+	color:					#ffffff;
+	background-color:	#eeeeff;
+
+	border-radius:		20px;
+	padding:				0px 20px;
+}
+
+/* *****************************************
+ styling for the "staff" page */
+.bubble p {
+	min-height:	180px;
+	text-indent:	0em;
+}
+
+.bubble section:nth-child(odd) p {
+	text-align:	right;
+}
+
+.bubble img {
+	height:	180px;
+    max-width: 300px;
+}
+
+/* *****************************************
+ styling for the "useful links"page */
+.logo {
+	text-align:	center;
+}
+
+.logo img {
+	height:	60px;
+	/*background-color:	red;*/
+}
+
+/* *****************************************
+ This is for the HBC logo in the top left corner */
+#logo {
+	position:	relative;
+	top:			-98px;
+	right:			760px;
+
+	width:		225px;
+	height:		117px;
+}
+
+@-moz-document url-prefix() {
+    #logo {
+        /*position: relative;*/
+        top: -101px;
+    }
+}
+
+/* *****************************************
+ styling for the small calendar widget*/
+#google {
+	border-radius:	8px;
+	width:				300px;
+	height:				400px;
+}
+
+/* *****************************************
+ styling for the pics on "main" page */
+.mainPic {
+	border-radius:	10px;
+	max-width:				480px;
+	max-height:				400px;
+    margin-left: 0px;
+	margin-bottom:	10px;
+	vertical-align:		top;
+}
+
+/* *****************************************
+ styling for the small calendar area */
+#calendar {
+	display:			table-cell;
+	font-weight:	bold;
+	padding:		0px 10px 20px 10px;
+	vertical-align:	middle;
+}
+
+/* *****************************************
+ styling for the big calendar widget */
+#bigCalendar {
+	border-radius:	8px;
+	width:				677px;
+	height:				500px;
+	padding:			0px 5px;
+	margin:				auto;
+}
+
+/* *****************************************
+ styling for the map widget */
+#map {
+	border-radius:	8px;
+	width:				677px;
+	height:				500px;
+	padding:			0px 5px;
+	margin:				auto;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+	text-align:	center;
+}
+
+.left {
+	text-align:	left;
+}
+
+.noIndent section p {
+	text-indent:	0em;
+}
+*/

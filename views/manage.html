@@ -1,0 +1,295 @@
+{{extend 'layout.html'}}
+
+
+<article class="tableCell">
+    <p></p>
+    <div class="table">
+            <div class="tableRow">
+			<div class="tableCell">
+
+{{if request.function == 'index':}}
+
+    <table class='table'>
+        {{for table in tables:}}
+            {{if table[0:4] != 'auth':}}
+                <tr>
+                    <th>
+                        {{=A(table,_href=URL('edit',args=table))}}
+                    </th>
+                </tr>
+            {{pass}}
+        {{pass}}
+    </table>
+
+
+
+{{elif request.function == 'edit':}}
+        <h3>
+            {{if table[0:4] == 'auth':}}
+                Auth Page: {{=table.capitalize()}}
+            {{else:}}
+                Web Page: {{=table.capitalize()}}
+            {{pass}}
+        </h3>
+        <div>
+            {{=A('Back',_class="btn btn-primary",_href=URL('index'))}}
+            {{if table != 'auth_event':}}
+                {{=A('New Record',_href=URL('new',args=(table)))}}
+            {{pass}}
+        </div>
+        <p>
+            {{=T('There %%{is} %s %%{record}.', count)}}
+            {{if table == 'auth_event':}}
+                <script>
+                    var del_list = [];
+                    $(document).ready(function() {
+                        $('#select_all').change(function() {
+                            if (this.checked) {  /* select_all checkbox selects all the other checkboxes if checked */
+                                $(':checkbox').each(function() {
+                                    this.checked = true;
+                                });
+                            }
+                            else {  /* select_all checkbox unselects all the other checkboxes if unchecked */
+                                $(':checkbox').each(function() {
+                                    this.checked = false;
+                                });
+                            }
+                        });
+                        $('#delete').click(function() {        /* gets the record id's of checked checkboxes, puts them in */
+                            $(':checkbox').each(function() {   /* a list, then runs the 'delete' python subroutine with */
+                                if (this.checked) {            /* args 'table' and 'del_list' */
+                                    del_list[del_list.length] = this.name;
+                                }
+                            });
+                            /*$('#delete').text(del_list.join('_'));*/
+                            self.location="{{=URL('delete')}}/{{=table}}/"+del_list.join('_'); /* run 'delete' python subroutine with .args 'table' and 'list of selected events'!!!! */
+                        });
+                    });
+                </script>
+            {{pass}}
+        </p>
+        <hr>
+        <table>
+
+                {{if table == 'auth_membership':}}
+                    <tr>
+                        <th>Edit</th>
+                        <th>{{=fields[1]}}</th>
+                        <th>{{=fields[2]}}</th>
+                    </tr>
+                    {{for row in rows:}}
+                        <tr>
+                            <td>{{=A('Edit_' + str(row[fields[0]]),_href=URL('update',args=(table,row.id)))}}</td>
+                            <td>{{=row[fields[1]].first_name.capitalize()}} {{=row[fields[1]].last_name.capitalize()}}</td>
+                            <td>{{=row[fields[2]].role.capitalize()}}</td>
+                        </tr>
+                    {{pass}}
+
+                {{elif table == 'auth_permission' or table == 'auth_CAS':}}
+                    <tr>
+                        <th>Edit</th>
+                        <th>{{=fields[1]}}</th>
+                        <th>{{=fields[2]}}</th>
+                        <th>{{=fields[3]}}</th>
+                        <th>{{=fields[4]}}</th>
+                    </tr>
+                    {{for row in rows:}}
+                        <tr>
+                            <td>{{=A('Edit_' + str(row[fields[0]]),_href=URL('update',args=(table,row.id)))}}</td>
+                            <td>{{=row[fields[1]]}}</td>
+                            <td>{{=row[fields[2]]}}</td>
+                            <td>{{=row[fields[3]]}}</td>
+                            <td>{{=row[fields[4]]}}</td>
+                        </tr>
+                    {{pass}}
+
+                {{elif table == 'auth_event':}}
+                    <tr>
+                        <th>View</th>
+                        <th>{{=fields[1].capitalize()}}</th>
+                        <th>{{=fields[3].capitalize()}}</th>
+                        <th>{{=fields[5].capitalize()}}</th>
+                        <th id="delete">Delete</th>
+                        <th><input id="select_all" type="checkbox" value="Select All"></th>
+                    </tr>
+                    {{for row in rows:}}
+                        <tr>
+                            <td>{{=A('View_' + str(row[fields[0]]),_href=URL('view',args=(table,row.id)))}}</td>
+                            <td>{{=row[fields[1]]}}</td>
+                            {{if row[fields[3]]:}}
+                                <td>{{=row[fields[3]].first_name.capitalize()}} {{=row[fields[3]].last_name.capitalize()}}</td>
+                            {{else:}}
+                                <td>New User</td>
+                            {{pass}}
+                            <td>{{=row[fields[5]]}}</td>
+                            <td><input type='checkbox' name='{{=row[fields[0]]}}'></td>
+                        </tr>
+                    {{pass}}
+
+
+                {{else:}}
+                    <tr>
+                        <th>Edit</th>
+                        <th>{{=fields[1].capitalize()}}</th>
+                        {{if fields[2] != 'is_active':}}
+                            <th>{{=fields[2].capitalize()}}</th>
+                        {{pass}}
+                        {{if table[0:4] != 'auth':}}
+                            <th>{{=fields[-6].capitalize()}}</th>
+                            <th>{{=fields[-5].capitalize()}}</th>
+                        {{pass}}
+                    </tr>
+                    {{for row in rows:}}
+                        <tr>
+                            <td>{{=A('Edit_' + str(row[fields[0]]),_href=URL('update',args=(table,row.id)))}}</td>
+                            <td>
+                                {{if row[fields[1]] == None:}}
+                                    {{='_'}}
+                                {{else:}}
+                                    {{=row[fields[1]][:20]}}
+                                {{pass}}
+                            </td>
+                            {{if fields[2] != 'is_active':}}
+                                <td>{{=row[fields[2]][:20]}}</td>
+                            {{pass}}
+                            {{if table[0:4] != 'auth':}}
+                                {{if row[fields[-6]]:}}
+                                    <td>Yes</td>
+                                {{else:}}
+                                    <td>No</td>
+                                {{pass}}
+                                <td>{{=row[fields[-5]]}}</td>
+                            {{pass}}
+                        </tr>
+                    {{pass}}
+                {{pass}}
+
+        </table>
+
+
+{{elif request.function == 'update':}}
+        <h3>
+            {{if table[0:4] == 'auth':}}
+                Auth Page: {{=table.capitalize()}}
+            {{else:}}
+                Web Page: {{=table.capitalize()}}
+            {{pass}}
+        </h3>
+        <div>
+            {{if table == 'auth_membership':}}
+                {{=A('Back',_class="btn btn-primary",_href=URL('update',args=('auth_user')))}}
+            {{else:}}
+                {{=A('Back',_class="btn btn-primary",_href=URL('edit',args=table))}}
+            {{pass}}
+        </div>
+        <h4>
+            Record Id: {{=record.first().id}}<br>
+            {{if table[0:4] != 'auth':}}
+                Last modified {{=prettydate(record.first().modified_on)}} by 
+                    {{=record.first().modified_by.first_name}} {{=record.first().modified_by.last_name}}.
+            {{pass}}
+        </h4>
+        <hr>
+        {{=form}}
+        {{if table2:}} <!-- only run this portion if table2 exists -->
+            {{include 'manage/update.html'}}
+        {{pass}}
+
+
+{{elif request.function == 'membership_update':}}
+        <h3>
+            Auth Page: {{=table.capitalize()}}
+        </h3>
+        <div>
+            {{=A('Back',_class="btn btn-primary",_href=URL('update',args=('auth_user',user)))}}
+        </div>
+        <h4>
+            Record Id: {{=record.first().id}}<br>
+            {{if table[0:4] != 'auth':}}
+                Last modified {{=prettydate(record.first().modified_on)}} by 
+                    {{=record.first().modified_by.first_name}} {{=record.first().modified_by.last_name}}.
+            {{pass}}
+        </h4>
+        <hr>
+        {{=form}}
+
+
+{{elif request.function == 'new':}}
+        <h3>
+            {{if table[0:4] == 'auth':}}
+                Auth Page: {{=table.capitalize()}}
+            {{else:}}
+                Web Page: {{=table.capitalize()}}
+            {{pass}}
+        </h3>
+        <div>
+            {{if table == 'auth_membership':}}
+                {{=A('Back',_class="btn btn-primary",_href=URL('update',args=('auth_user',id)))}}
+            {{else:}}
+                {{=A('Back',_class="btn btn-primary",_href=URL('edit',args=table))}}
+            {{pass}}
+        </div>
+        <h4>
+            Please create a new record.
+        </h4>
+                {{#=g}}
+        <hr>
+        {{=form}}
+
+
+{{elif request.function == 'new_user':}}
+        <h3>
+                Auth Page: New User
+        </h3>
+        <div>
+                {{=A('Back',_class="btn btn-primary",_href=URL('index'))}}
+        </div>
+        <h4>
+            Please accept new user.
+        </h4>
+        <hr>
+        <table>
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            {{for row in rows:}}
+                <tr>
+                    <td>{{=A('Accept',_href=URL('accept_new_user',args=row.id))}}</td>
+                    <td>{{=row.first_name}}</td>
+                    <td>{{=row.last_name}}</td>
+                    <td>{{=row.email}}</td>
+                    <td>{{=A('Delete',_href=URL('delete_new_user',args=row.id))}}</td>
+                </tr>
+            {{pass}}
+        </table>
+        {{#=form}}
+
+
+{{elif request.function == 'view':}}
+        <h3>
+            {{if table[0:4] == 'auth':}}
+                Auth Page: {{=table.capitalize()}}
+            {{else:}}
+                Web Page: {{=table.capitalize()}}
+            {{pass}}
+        </h3>
+        <div>
+            {{=A('Back',_class="btn btn-primary",_href=URL('edit',args=table))}}
+        </div>
+        <h4>
+            Record {{=id}} from table '{{=table.capitalize()}}'.
+        </h4>
+        <hr>
+        {{=form}}
+
+
+{{pass}}
+
+            </div>
+        </div>
+    </div>
+</article>

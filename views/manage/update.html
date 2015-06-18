@@ -1,0 +1,23 @@
+<hr>
+<h3>Memberships</h3>
+{{=A('New Membership',_class="btn btn-primary",_href=URL('new',args=('auth_membership',id)))}}
+<table>
+    <tr>
+        <th></th>
+        <th>User ID</th>
+        <th>Group ID</th>
+        <th>Description</th>
+    </tr>
+    {{for row in table2:}}
+        <tr>
+            <td>
+                {{if (row.group_id != 3) and (row.group_id != 2):}}
+                    {{=A('Edit',_class="btn btn-primary",_href=URL('membership_update',args=('auth_membership',row.id,row.user_id)))}}
+                {{pass}}
+            </td>
+            <td>{{=row.user_id.first_name}}</td>
+            <td>{{=row.group_id.role}}</td>
+            <td>{{=row.group_id.description}}</td>
+        </tr>
+    {{pass}}
+</table>

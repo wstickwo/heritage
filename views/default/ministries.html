@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell">
+
+	<h3>Our Ministries:</h3>
+
+    {{for ministry in ministries:}}
+        <section>
+            {{if ministry.image:}}
+                 <img src="{{=URL('download',args=ministry.image)}}" alt="{{=ministry.id}}">
+                <script>
+                    $('img[alt="{{=ministry.id}}"]').load(function() {
+                        var height = $(this).height();
+                        $(this).parent().css('min-height',height + 5 + 'px');
+                    });
+                </script>
+            {{pass}}
+             {{if ministry.title:}}
+                <h3>{{=ministry.title.title()+':' if ministry.title else ''}}</h3>
+            {{pass}}
+            {{=MARKMIN(ministry.paragraph)}}
+        </section>
+    {{pass}}
+
+</article>

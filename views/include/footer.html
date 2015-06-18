@@ -1,0 +1,43 @@
+<!--<div class="col-md-12">-->
+	{{if request.controller == 'manage':}}
+		<h6 class='center'>Markmin</h6>
+		<table>
+			<tr>
+				<th>You Type</th>
+				<th>Result</th>
+				<th>You Type</th>
+				<th>Result</th>
+			</tr>
+			<tr>
+				<td class="right">**bold** : </td>
+				<td>{{=MARKMIN("**bold**")}}</td>
+				<td class="right">[[webpage name  http://webpage.url]] : </td>
+				<td>{{=MARKMIN("[[Heritage Baptist Church http://hbcyorkton.ca]]")}}</td>
+			</tr>
+			<tr>
+				<td class="right">''italic'' : </td>
+				<td>{{=MARKMIN("''italic''")}}</td>
+				<td class="right">[[open new page  http://webpage.url popup]] : </td>
+				<td>{{=MARKMIN("[[Heritage Baptist Church http://hbcyorkton.ca popup]]")}}</td>
+			</tr>
+			<tr>
+				<td class="right">- Unordered list  <br>- Unordered list: </td>
+				<td>{{=MARKMIN("- Unordered list \n - Unordered list")}}</td>
+				<td class="right">+ Ordered list  <br>+ Ordered list: </td>
+				<td>{{=MARKMIN("+ Ordered list \n + Ordered list")}}</td>
+			</tr>
+		</table>
+	{{else:}}
+		<h6>Verse of the Day</h6>
+		<script src='https://www.biblegateway.com/votd/votd.write.callback.js'></script>
+		<script src='https://www.biblegateway.com/votd/get?format=json&amp;version=31&amp;callback=BG.votdWriteCallback'></script>
+		<noscript>
+			<iframe id='gateway' src='https://www.biblegateway.com/votd/get?format=html&amp;version=NIV' seamless></iframe>
+		</noscript>
+	{{pass}}
+	<br>
+	<div id='rights'>
+		All rights reserved<br>
+		Created with Web2py
+	</div>
+<!--</div>-->

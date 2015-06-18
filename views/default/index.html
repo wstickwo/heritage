@@ -1,0 +1,44 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell">
+
+    <h3>HBC Yorkton</h3>
+
+	<p>{{=MARKMIN(main.paragraph_1)}}</p>
+
+	<div class="table">
+		<div class="tableRow">
+			<div class="tableCell">
+				<img class="mainPic" src="{{=URL('download',args=main.pic_1)}}" alt='{{=main.pic_alt_1}}'>
+                <script>
+                    $('img[alt="{{=main.pic_alt_1}}"]').load(function() {
+                        if($(this).width()<450) {
+                            var width = (450-$(this).width())/2; }
+                        //$('p').parent().append($(this).width());
+                        $(this).css('margin-left',width + 'px');
+                    });
+                </script>
+                {{if main.pic_2:}}
+                    <br>
+                    <img class="mainPic" src="{{=URL('download',args=main.pic_2)}}" alt='{{=main.pic_alt_2}}'>
+                    <script>
+                        $('img[alt="{{=main.pic_alt_2}}"]').load(function() {
+                            if($(this).width()<450) {
+                                var width = (450-$(this).width())/2; }
+                            //$('p').parent().append(width);
+                            $(this).css('margin-left',width + 'px');
+                        });
+                </script>
+                {{pass}}
+			</div>
+			<p id="calendar" class="tableCell left">
+				This week:<br>
+				<iframe id="google" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=office%40hbcyorkton.ca&amp;color=%23705770&amp;ctz=America%2FRegina"
+					seamless>
+				</iframe>
+			</p>
+		</div>
+	</div>
+    <p>{{=MARKMIN(main.paragraph_2)}}</p>
+
+</article>

@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+<article class='tableCell'>
+    {{=form}}
+    <hr>
+
+    <table class='table'>
+        <tr>
+            <th>ID</th>
+            <th>Paragraph 1</th>
+            <th>Paragraph 2</th>
+            <th>PIC 1</th>
+            {{if db.main_page.pic_2:}}
+                <th>PIC 2</th>
+            {{pass}}
+        </tr>
+        {{for record in records:}}
+            <tr>
+                <td>{{=A('Edit '+str(record.id),_href=URL('update/db/'+request.function,args=record.id))}}</td>
+                <td>{{=record.paragraph_1[0:30]}}...</td>
+                <td>{{=record.paragraph_2[0:30]}}...</td>
+                <td>{{=record.pic_alt_1}}</td>
+                {{if record.pic_2:}}
+                    <td>{{=record.pic_alt_2}}</td>
+                {{pass}}
+            </tr>
+        {{pass}}
+    </table>
+</article>

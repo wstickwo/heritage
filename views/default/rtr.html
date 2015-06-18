@@ -1,0 +1,27 @@
+{{extend 'layout.html'}}
+
+<article class="tableCell">
+
+    <h3>
+        RAISE THE ROOF
+    </h3>
+
+    {{for rtr in rtrs:}}
+        <section>
+            <div>
+                {{if rtr.image:}}
+                    <img src="{{=URL('download',args=rtr.image)}}" alt="{{=rtr.id}}">
+                    <script>
+                         $('img[alt="{{=rtr.id}}"]').load(function() {
+                            var height = $(this).height();
+                            $(this).parent().css('min-height',height + 5 + 'px');
+                        });
+                    </script>
+                {{pass}}
+                <h3>{{=rtr.title}}</h3>
+                {{=MARKMIN(rtr.paragraph)}}
+            </div>
+        </section>
+    {{pass}}
+
+</article>
