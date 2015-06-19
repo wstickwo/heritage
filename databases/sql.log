@@ -1,0 +1,316 @@
+timestamp: 2015-03-03T05:00:29.243006
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    username VARCHAR(128),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.290270
+CREATE TABLE auth_group(
+    id INT AUTO_INCREMENT NOT NULL,
+    role VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.326007
+CREATE TABLE auth_membership(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.370588
+CREATE TABLE auth_permission(
+    id INT AUTO_INCREMENT NOT NULL,
+    group_id INT, INDEX group_id__idx (group_id), FOREIGN KEY (group_id) REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.407121
+CREATE TABLE auth_event(
+    id INT AUTO_INCREMENT NOT NULL,
+    time_stamp DATETIME,
+    client_ip VARCHAR(512),
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description LONGTEXT,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.449497
+CREATE TABLE auth_cas(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT, INDEX user_id__idx (user_id), FOREIGN KEY (user_id) REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on DATETIME,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.498157
+CREATE TABLE main_page(
+    id INT AUTO_INCREMENT NOT NULL,
+    paragraph_1 LONGTEXT,
+    pic_1 VARCHAR(512),
+    pic_file_1 LONGBLOB,
+    pic_alt_1 VARCHAR(512),
+    pic_2 VARCHAR(512),
+    pic_file_2 LONGBLOB,
+    pic_alt_2 VARCHAR(512),
+    paragraph_2 LONGTEXT,
+    in_order INT,
+    is_active CHAR(1),
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.547596
+CREATE TABLE about_us(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    paragraph LONGTEXT,
+    image VARCHAR(512),
+    image_file LONGBLOB,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.599803
+CREATE TABLE ministries(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    paragraph LONGTEXT,
+    image VARCHAR(512),
+    image_file LONGBLOB,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.663915
+CREATE TABLE staff(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(512),
+    job_post VARCHAR(512),
+    image VARCHAR(512),
+    image_file LONGBLOB,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.724102
+CREATE TABLE youth(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    paragraph LONGTEXT,
+    image VARCHAR(512),
+    image_file LONGBLOB,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.785162
+CREATE TABLE rtr(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    paragraph LONGTEXT,
+    image VARCHAR(512),
+    image_file LONGBLOB,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.833644
+CREATE TABLE mp3(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(512),
+    pastor VARCHAR(512),
+    datetime VARCHAR(512),
+    mp3_file VARCHAR(512),
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:29.882506
+CREATE TABLE link_categories(
+    id INT AUTO_INCREMENT NOT NULL,
+    category VARCHAR(512),
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:30.079022
+CREATE TABLE links(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    url VARCHAR(512),
+    pic VARCHAR(512),
+    pic_file LONGBLOB,
+    category INT, INDEX category__idx (category), FOREIGN KEY (category) REFERENCES link_categories (id) ON DELETE CASCADE,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:30.137348
+CREATE TABLE contact(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    paragraph LONGTEXT,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-03-03T05:00:30.183827
+CREATE TABLE side_menu(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    paragraph LONGTEXT,
+    is_active CHAR(1),
+    in_order INT,
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE auth_user;
+SET FOREIGN_KEY_CHECKS=1;
+success!
+timestamp: 2015-03-05T15:32:17.946031
+CREATE TABLE auth_user(
+    id INT AUTO_INCREMENT NOT NULL,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    username VARCHAR(128),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-04T03:07:42.870198
+CREATE TABLE directory(
+    id INT AUTO_INCREMENT NOT NULL,
+    husband VARCHAR(512),
+    is_member_1 CHAR(1),
+    wife VARCHAR(512),
+    is_member_2 CHAR(1),
+    last_name VARCHAR(512),
+    children LONGTEXT,
+    address VARCHAR(512),
+    city VARCHAR(512),
+    prov VARCHAR(512),
+    postal_code VARCHAR(512),
+    home_phone VARCHAR(512),
+    cell_phone_1 VARCHAR(512),
+    cell_phone_2 VARCHAR(512),
+    mailbox_num VARCHAR(512),
+    is_active CHAR(1),
+    created_on DATETIME,
+    created_by INT, INDEX created_by__idx (created_by), FOREIGN KEY (created_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_on DATETIME,
+    modified_by INT, INDEX modified_by__idx (modified_by), FOREIGN KEY (modified_by) REFERENCES auth_user (id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2015-05-04T03:08:42.854451
+ALTER TABLE directory ADD mailbox_num__tmp INT;
+success!
+UPDATE directory SET mailbox_num__tmp=mailbox_num;
+success!
+ALTER TABLE directory DROP COLUMN mailbox_num;
+success!
+ALTER TABLE directory ADD mailbox_num INT;
+success!
+UPDATE directory SET mailbox_num=mailbox_num__tmp;
+success!
+ALTER TABLE directory DROP COLUMN mailbox_num__tmp;
+success!
+success!
+timestamp: 2015-05-04T03:17:42.829880
+ALTER TABLE directory ADD woman VARCHAR(512);
+success!
+timestamp: 2015-05-04T03:17:43.087732
+ALTER TABLE directory ADD man VARCHAR(512);
+success!
+timestamp: 2015-05-04T03:17:43.272051
+ALTER TABLE directory DROP COLUMN wife;
+success!
+timestamp: 2015-05-04T03:17:43.460443
+ALTER TABLE directory DROP COLUMN husband;
+success!
+timestamp: 2015-05-04T03:24:24.751246
+ALTER TABLE directory ADD pic VARCHAR(512);
+success!
+success!
+timestamp: 2015-05-10T16:05:26.128611
+ALTER TABLE directory ADD email_2 VARCHAR(512);
+success!
+timestamp: 2015-05-10T16:05:26.545435
+ALTER TABLE directory ADD email_1 VARCHAR(512);
+success!
+success!

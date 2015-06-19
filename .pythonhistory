@@ -1,0 +1,20 @@
+db.export_to_csv_file(open('heritage_export.csv', 'wb'))
+exit()
+db.import_from_csv_file(open('heritage_export.csv', 'rb'))
+import sys
+import csv
+csv.field_size(sys.maxsize)
+csv.field_size_limit(sys.maxsize)
+csv.field_size_limit(1310720)
+db.import_from_csv_file(open('heritage_export.csv', 'rb'))
+csv.field_size_limit(13107200)
+db.import_from_csv_file(open('heritage_export.csv', 'rb'))
+db.commit()
+exit()
+print db.tables
+print db.auth_user.fields
+print db.auth_user.username.validate('wayne')
+print db.auth_user.password.validate('password')
+db.auth_user.drop()
+db.tables
+exit()
