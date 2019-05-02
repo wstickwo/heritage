@@ -7,37 +7,45 @@ def index():
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def about():
     abouts = db(db.about_us.is_active==True).select(orderby=db.about_us.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def map():
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def calendar():
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
+
 
 def ministries():
     ministries = db(db.ministries.is_active==True).select(orderby=db.ministries.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def staff():
     staff = db(db.staff.is_active==True).select(orderby=db.staff.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
+
 
 def youth():
     youths = db(db.youth.is_active==True).select(orderby=db.youth.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def media():
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
+
 
 def links():
     categories = db().select(db.link_categories.ALL,orderby=db.link_categories.id)
@@ -45,15 +53,18 @@ def links():
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def contact():
     contacts = db(db.contact.is_active==True).select(orderby=db.contact.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
 
+
 def rtr():
     rtrs = db(db.rtr.is_active==True).select(orderby=db.rtr.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
+
 
 def directory():
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
@@ -132,25 +143,30 @@ def directory():
         )
     return dict(grid=grid,side=side)
 
+
 def test():
     youths = db(db.youth.is_active==True).select(orderby=db.youth.in_order)
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return locals()
+
 
 def login():
     response.view = 'auth.html'
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return dict(form=auth.login(),side=side)
 
+
 def register():
     response.view = 'auth.html'
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return dict(form=auth.register(),side=side)
 
+
 def retrieve_username():
     response.view = 'auth.html'
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return dict(form=auth.retrieve_username(),side=side)
+
 
 def request_reset_password():
     response.view = 'auth.html'
@@ -177,6 +193,7 @@ def change_password():
     response.view = 'auth.html'
     side = db(db.side_menu.is_active==True).select(orderby=db.side_menu.in_order)
     return dict(form=auth.change_password(),side=side)
+
 
 def user():
     """
